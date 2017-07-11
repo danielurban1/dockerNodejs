@@ -1,0 +1,18 @@
+
+{
+
+"apps": [{
+
+   "name" : "poligon",
+   "script" : "./bin/www",
+   "watch" : true,
+   "watch_options": { 
+      "usePolling" : true,
+	  "alwaysStat" : true,
+	  "useFsEvents" : false,
+	  "persistent" : true,
+	  "ignoreInitial" : true 
+   }
+
+}]
+}

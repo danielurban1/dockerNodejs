@@ -1,0 +1,32 @@
+version: '3'
+services:
+  myweb:
+    build: .
+    command: gulp serve
+    volumes:
+      - ./app/:/usr/app/
+      - /usr/app/node_modules
+      - /usr/app/bower_components
+    ports:
+      - "9010:9010"
+      - "9000:9000"
+      - "3001:3001"
+    links:
+      - myredis
+      - mydb1
+    environment:
+      DATABASE_URL: db
+  myredis:
+    image: redis
+  mydb1:
+    image: mysql
+    expose:
+      - 3306
+    environment:
+      DATABASE_URL: db
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: poligon
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: qqq
+    ports:
+      -  4444:3306

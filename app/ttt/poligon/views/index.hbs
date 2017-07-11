@@ -1,0 +1,16 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+<form action="/user/submit" method="post">
+	<p>Nazwa użytkownika</p>
+	<input type="text" name="name"><br>
+	<p>Hasło</p>
+	<input type="text" name="password"><br>
+	<p>Treść</p>
+    <input type="text" name="id"><br>
+    <button type="submit">Opublikuj</button>
+</form>
+<a href="/users">Users</a><br>
+<a href="/user/posts">Posts</a>
+
+
+<p>Wersja aplikacji: {{ verapp }} / {{ currentrouting }}</p>

@@ -1,0 +1,52 @@
+<h1>You accessed this page via a GET request</h1>
+<p>Treść posta {{ id }}</p>
+<p>Autor posta {{ name }}</p>
+<p>Data wykonania {{ time }}</p>
+<p>Nr rekordu {{ norecord }}</p>
+
+<p>Czas oczekiwania: {{ elapsed }}</p>
+
+<table border="1">
+<tr>
+  <td>Numer</td>
+  <td>Autor</td>
+  <td>Treść posta</td>
+</tr>
+{{#each list}}
+<tr>
+  <td>{{this.idposts}}</td>
+  <td>{{this.author}}</td>
+  <td>{{this.post}}</td>
+  <td><input type="checkbox" name="idposts" value="{{this.idposts}}" onclick="selectChoiceDelete('{{this.idposts}}')" ></td>
+</tr>
+{{/each}}
+
+</table>
+
+<form action="/user/delete" method="post">
+	<p>Numer postu do ununięcia</p>
+	<input type="text" id="selids" readonly  name="del"><br>
+    <button type="delete">Usuń</button>
+</form>
+
+<p>Wersja aplikacji: {{ verapp }} / {{ currentrouting }}</p>w
+
+<script>
+
+selectedChoices = [];
+function selectChoiceDelete(id){
+
+//console.log(id);
+  
+  if (selectedChoices.indexOf(id) > -1) {
+       var poss = selectedChoices.indexOf(id);
+       selectedChoices = _.filter(selectedChoices, function(o) { return o != id});
+  } else {
+
+       selectedChoices.push(id);
+  }
+
+  $("input#selids").val(selectedChoices.join(', '));
+}
+
+</script>
